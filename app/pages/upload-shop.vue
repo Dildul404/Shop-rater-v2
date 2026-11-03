@@ -1,7 +1,3 @@
 <template>
-  <div>
-    <NuxtLayout>
-      <SectionUploadShop />
-    </NuxtLayout>
-  </div>
+  <ComponentShopFormInput action="" />
 </template>

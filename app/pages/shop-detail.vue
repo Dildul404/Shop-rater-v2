@@ -1,7 +1,3 @@
 <template>
-  <div>
-    <NuxtLayout>
-      <SectionShopDetail />
-    </NuxtLayout>
-  </div>
+  <ComponentShopDetail />
 </template>
