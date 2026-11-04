@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Shop } from '~/composables/get-shops'
 import { Button } from "@/components/ui/button"
-import { MapPin } from 'lucide-vue-next';
+import { MapPin } from 'lucide-vue-next'
 
 withDefaults(
   defineProps<{
@@ -22,7 +22,7 @@ const { getStars } = useStarRating()
 
     <!-- Grid minimal 6 card, rasio gambar 5:4 -->
     <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-      <NuxtLink v-for="shop in shops" :key="shop.id" to="/shop-detail"
+      <div v-for="shop in shops" :key="shop.id"
         class="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition hover:shadow-md">
         <!-- Gambar placeholder dengan rasio 5:4 -->
         <div class="relative w-full" style="aspect-ratio: 16 / 9">
@@ -69,16 +69,14 @@ const { getStars } = useStarRating()
             </div>
             <!-- Tombol detail -->
             <div class="flex gap-2">
-              <Button size="sm">
-                Detail
-              </Button>
+              <ComponentSheet textButton="Overview" :shop="shop" />
               <Button size="sm" variant="outline">
                 <MapPin data-icon="inline-end" /> Map
               </Button>
             </div>
           </div>
         </div>
-      </NuxtLink>
+      </div>
     </div>
   </section>
 </template>
