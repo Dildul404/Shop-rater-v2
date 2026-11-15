@@ -101,7 +101,7 @@ function getPrimaryImage(shop?: Shop): string | null {
             </SheetHeader>
             <SheetFooter>
                 <ComponentLocationPicker :search="false" :coordinates="shop?.coordinates"/>
-                <NuxtLink to="/shop-detail">
+                <NuxtLink :to="'/shop-detail/' + shop?.slug">
                     <Button class="w-full" type="button">
                         Detail
                     </Button>

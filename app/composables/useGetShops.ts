@@ -20,6 +20,7 @@ export const useGetShops = () => {
     `${config.public.apiBase}/api/shops`,
     {
       default: () => [],
+      key: 'shop-list',
     },
   )
 
