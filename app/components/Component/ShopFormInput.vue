@@ -77,10 +77,8 @@ function pickSuggestion(s: { label: string; lat: string; lon: string }) {
           <h2 class="flex items-center gap-3 text-3xl font-bold text-neutral-900">
             <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="none" viewBox="0 0 24 24">
               <path d="M0 0h24v24H0z" fill="none" />
-              <path
-                fill="currentColor"
-                d="M5 4h14q.425 0 .713.288T20 5t-.288.713T19 6H5q-.425 0-.712-.288T4 5t.288-.712T5 4m0 16q-.425 0-.712-.288T4 19v-5h-.175q-.475 0-.775-.363t-.2-.837l1-5q.075-.35.35-.575T4.825 7h14.35q.35 0 .625.225t.35.575l1 5q.1.475-.2.837t-.775.363H20v5q0 .425-.288.713T19 20t-.712-.288T18 19v-5h-4v5q0 .425-.288.713T13 20zm1-2h6v-4H6zm-.95-6h13.9zm0 0h13.9l-.6-3H5.65z"
-              />
+              <path fill="currentColor"
+                d="M5 4h14q.425 0 .713.288T20 5t-.288.713T19 6H5q-.425 0-.712-.288T4 5t.288-.712T5 4m0 16q-.425 0-.712-.288T4 19v-5h-.175q-.475 0-.775-.363t-.2-.837l1-5q.075-.35.35-.575T4.825 7h14.35q.35 0 .625.225t.35.575l1 5q.1.475-.2.837t-.775.363H20v5q0 .425-.288.713T19 20t-.712-.288T18 19v-5h-4v5q0 .425-.288.713T13 20zm1-2h6v-4H6zm-.95-6h13.9zm0 0h13.9l-.6-3H5.65z" />
             </svg>
             Upload new shop
           </h2>
@@ -97,47 +95,23 @@ function pickSuggestion(s: { label: string; lat: string; lon: string }) {
             <label
               class="flex h-52 w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed bg-white transition hover:border-neutral-900 hover:bg-neutral-100"
               :class="isDragging ? 'border-neutral-900 bg-neutral-100' : 'border-neutral-300'"
-              @dragover.prevent="isDragging = true"
-              @dragleave.prevent="isDragging = false"
-              @drop.prevent="onDrop"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="mb-4 size-10 text-neutral-900/60"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.7"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 16V4m0 0l-4 4m4-4l4 4M4 16.5A2.5 2.5 0 006.5 19h11a2.5 2.5 0 002.5-2.5A2.5 2.5 0 0017.5 14H17a5 5 0 10-10 0h-.5A2.5 2.5 0 004 16.5z"
-                />
+              @dragover.prevent="isDragging = true" @dragleave.prevent="isDragging = false" @drop.prevent="onDrop">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mb-4 size-10 text-neutral-900/60" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 16V4m0 0l-4 4m4-4l4 4M4 16.5A2.5 2.5 0 006.5 19h11a2.5 2.5 0 002.5-2.5A2.5 2.5 0 0017.5 14H17a5 5 0 10-10 0h-.5A2.5 2.5 0 004 16.5z" />
               </svg>
 
               <p class="text-lg font-medium text-neutral-900">Select a file or drag and drop here</p>
               <p class="text-sm text-neutral-900/60">JPG, PNG or PDF, file size no more than 10MB</p>
 
-              <input
-                ref="fileInput"
-                type="file"
-                class="hidden"
-                name="shop-images[]"
-                multiple
-                accept="image/*"
-                @change="onFileChange"
-              />
+              <input ref="fileInput" type="file" class="hidden" name="shop-images[]" multiple accept="image/*"
+                @change="onFileChange" />
             </label>
 
             <div class="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
-              <img
-                v-for="p in previews"
-                :key="p.url"
-                :src="p.url"
-                :alt="p.name"
-                class="aspect-square w-full rounded-lg object-cover"
-              />
+              <img v-for="p in previews" :key="p.url" :src="p.url" :alt="p.name"
+                class="aspect-square w-full rounded-lg object-cover" />
             </div>
           </div>
 
@@ -174,12 +148,8 @@ function pickSuggestion(s: { label: string; lat: string; lon: string }) {
               </legend>
               <div class="grid grid-cols-[repeat(auto-fit,minmax(90px,1fr))] gap-5 text-center">
                 <label v-for="d in days" :key="d.value" class="flex cursor-pointer items-center gap-2 text-sm">
-                  <input
-                    name="bussiness-days[]"
-                    type="checkbox"
-                    :value="d.value"
-                    class="size-4 rounded border-neutral-300 accent-neutral-900"
-                  />
+                  <input name="bussiness-days[]" type="checkbox" :value="d.value"
+                    class="size-4 rounded border-neutral-300 accent-neutral-900" />
                   {{ d.label }}
                 </label>
               </div>
@@ -191,12 +161,8 @@ function pickSuggestion(s: { label: string; lat: string; lon: string }) {
             <label for="description" class="mb-1 block text-sm font-semibold">
               Description <span class="text-red-600">*</span>
             </label>
-            <textarea
-              id="description"
-              name="description"
-              placeholder="Describe your shop"
-              :class="[inputClass, 'h-32 resize-none']"
-            ></textarea>
+            <textarea id="description" name="description" placeholder="Describe your shop"
+              :class="[inputClass, 'h-32 resize-none']"></textarea>
           </div>
 
           <!-- Motto -->
@@ -209,7 +175,7 @@ function pickSuggestion(s: { label: string; lat: string; lon: string }) {
 
           <!-- Location -->
           <fieldset class="space-y-2">
-            <legend class="mb-1 text-sm font-semibold">
+            <!-- <legend class="mb-1 text-sm font-semibold">
               Location <span class="text-red-600">*</span>
             </legend>
 
@@ -231,23 +197,21 @@ function pickSuggestion(s: { label: string; lat: string; lon: string }) {
 
             <input v-model="address" name="address" readonly :class="inputClass" />
             <input v-model="lat" name="latitude" readonly :class="inputClass" />
-            <input v-model="lon" name="longitude" readonly :class="inputClass" />
+            <input v-model="lon" name="longitude" readonly :class="inputClass" /> -->
+
+            <ComponentLocationPicker :search="true" />
           </fieldset>
 
           <hr class="my-6 border-neutral-200" />
 
           <!-- Action -->
           <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-            <button
-              type="button"
-              class="rounded-lg border border-neutral-300 px-5 py-2 text-sm font-semibold transition hover:bg-neutral-100"
-            >
+            <button type="button"
+              class="rounded-lg border border-neutral-300 px-5 py-2 text-sm font-semibold transition hover:bg-neutral-100">
               Cancel
             </button>
-            <button
-              type="submit"
-              class="rounded-lg bg-neutral-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-neutral-700"
-            >
+            <button type="submit"
+              class="rounded-lg bg-neutral-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-neutral-700">
               Save Project
             </button>
           </div>
