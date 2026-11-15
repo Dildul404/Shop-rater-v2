@@ -10,7 +10,7 @@ import {
     SheetTitle,
     SheetTrigger
 } from "@/components/ui/sheet"
-import type { Shop } from '~/composables/get-shops'
+import type { Shop } from '~/types/shop'
 
 const props = withDefaults(
     defineProps<{
@@ -100,6 +100,7 @@ function getPrimaryImage(shop?: Shop): string | null {
                 </div>
             </SheetHeader>
             <SheetFooter>
+                <ComponentLocationPicker :search="false" :coordinates="shop?.coordinates"/>
                 <NuxtLink to="/shop-detail">
                     <Button class="w-full" type="button">
                         Detail

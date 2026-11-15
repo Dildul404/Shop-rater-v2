@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Shop } from '~/composables/get-shops'
+import type { Shop } from '~/types/shop'
 import { Button } from '@/components/ui/button'
 import { MapPin } from 'lucide-vue-next'
 
@@ -21,7 +21,7 @@ const { getStars } = useStarRating()
 function getPrimaryImage(shop: Shop): string | null {
   if (!shop.images || shop.images.length === 0) return null
   const primary = shop.images.find((img) => img.isPrimary)
-  return primary?.url ?? shop.images[0].url
+  return primary?.url ?? shop.images[0]?.url ?? null
 }
 </script>
 
